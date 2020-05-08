@@ -18,3 +18,9 @@ body {
   padding-top: 100px;
   background-color: #cbe0e0;
 }
+
+iframe {
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
