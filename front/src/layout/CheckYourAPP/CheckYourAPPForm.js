@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import CheckYourAPP from "./CheckYourAPP.js";
+import GenerateAnnonymousLink from "./GenerateAnnonymousLink.js";
 
-const CheckYourAPPForm = () => {
+const CheckYourAPPForm = (props) => {
   const formRef = useRef();
   const [url, setUrl] = useState(null);
 
@@ -14,25 +15,41 @@ const CheckYourAPPForm = () => {
     setUrl(url);
   };
 
+  const isLogin = () => {
+    const login = props.user;
+    if (login == null) return false;
+    return true;
+  };
+
   return (
     <div className="container">
-      <div>
-        <form ref={formRef} onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Insert your application URL</label>
-            <input
-              type="text"
-              className="form-control"
-              id="URL"
-              aria-describedby="emailHelp"
-            />
+      {!isLogin() ? (
+        <div className="alert alert-danger" role="alert">
+          You need to be login to do your own test
+        </div>
+      ) : (
+        <div>
+          <div>
+            <form ref={formRef} onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Insert your application URL</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="URL"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-      <CheckYourAPP url={url}></CheckYourAPP>
+          <CheckYourAPP url={url}></CheckYourAPP>
+          <br />
+          <GenerateAnnonymousLink></GenerateAnnonymousLink>
+        </div>
+      )}
     </div>
   );
 };
