@@ -14,9 +14,29 @@ a {
   font-family: "Noto Serif", Serif;
 }
 
+.navbar {
+  background-color: #4eeaf6;
+}
+
+#navbarText {
+  color: #c82586;
+}
+
+.btn-primary {
+  border-color: #c82586;
+  background-color: #c82586;
+}
+
+.btn-primary:focus,
+.btn-primary:disabled,
+.btn-primary:hover {
+  border-color: #a72272;
+  background-color: #a72272;
+}
+
 body {
   padding-top: 100px;
-  background-color: #cbe0e0;
+  background-color: #f7f7f8;
 }
 
 iframe {

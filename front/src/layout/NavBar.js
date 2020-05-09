@@ -7,7 +7,7 @@ const backurl = "http://localhost:3001";
 
 const NavBar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg fixed-top">
       <Link to="/" className="nav-link">
         <img
           src={logo}
