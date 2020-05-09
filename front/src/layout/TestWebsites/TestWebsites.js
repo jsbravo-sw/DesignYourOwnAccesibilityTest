@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalAnswer from "./ModalAnswer.js";
+import ModalConsent from "./ModalConsent.js";
 
 let tests = [
   [{ name: 1 }, { name: 2 }, { name: 3 }],
@@ -13,13 +13,12 @@ const TestWebsites = () => {
     setCurrentTest(test);
   };
 
-  const code = tests.map((group) => {
-    console.log(group);
+  const code = tests.map((group, i) => {
     return (
-      <div className="row">
+      <div key={"row" + i} className="row">
         {group.map((test) => {
           return (
-            <div className="col-sm">
+            <div key={test.name} className="col-sm">
               {test.name ? (
                 <div className="card">
                   <div className="card-body">
@@ -33,14 +32,14 @@ const TestWebsites = () => {
                     </p>
                     <button
                       type="button"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       data-toggle="modal"
-                      data-target="#exampleModal"
+                      data-target="#modalConsent"
                       onClick={(evt) => handleClick(evt, test)}
                     >
                       Launch demo modal
                     </button>
-                    <ModalAnswer test={currentTest}></ModalAnswer>
+                    <ModalConsent test={currentTest}></ModalConsent>
                   </div>
                 </div>
               ) : (

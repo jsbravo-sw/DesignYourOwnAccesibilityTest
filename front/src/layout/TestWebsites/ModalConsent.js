@@ -1,10 +1,11 @@
 import React from "react";
+import ModalAnswer from "./ModalAnswer.js";
 
-const ModalAnswer = (props) => {
+const ModalConsent = (props) => {
   return (
     <div
       className="modal fade"
-      id="exampleModal"
+      id="modalConsent"
       tabIndex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -14,7 +15,7 @@ const ModalAnswer = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              {props.test.name}
+              Habeas Data
             </h5>
             <button
               type="button"
@@ -25,18 +26,24 @@ const ModalAnswer = (props) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body">{props.test.name}</div>
           <div className="modal-footer">
             <button
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
             >
-              Close
+              I don't consent
             </button>
-            <button type="submit" className="btn btn-primary">
-              Submit
+            <button
+              type="submit"
+              className="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              I consent
             </button>
+            <ModalAnswer test={props.test}></ModalAnswer>
           </div>
         </div>
       </div>
@@ -44,4 +51,4 @@ const ModalAnswer = (props) => {
   );
 };
 
-export default ModalAnswer;
+export default ModalConsent;
