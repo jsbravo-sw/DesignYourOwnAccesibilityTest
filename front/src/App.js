@@ -13,7 +13,6 @@ const App = () => {
     fetch("/auth/getUser")
       .then((res) => res.json())
       .then((user) => {
-        console.log("APPUSER", user);
         setUser(user);
       });
   }, []);
@@ -21,10 +20,17 @@ const App = () => {
   return (
     <Router>
       <NavBar user={user}></NavBar>
-      <Home></Home>
-      <CheckYourAPPForm></CheckYourAPPForm>
-      <TestWebsites></TestWebsites>
-      <Switch></Switch>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/gettesting">
+          <TestWebsites />
+        </Route>
+        <Route exact path="/createyourowntest">
+          <CheckYourAPPForm />
+        </Route>
+      </Switch>
     </Router>
   );
 };

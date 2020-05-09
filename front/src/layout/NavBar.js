@@ -30,6 +30,11 @@ const NavBar = (props) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </li>
           {!props.user ? (
             <li className="nav-item">
               <a className="nav-link" href={`${backurl}/auth/google`}>

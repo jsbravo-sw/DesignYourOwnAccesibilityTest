@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -13,12 +14,16 @@ const Home = () => {
         </div>
       </div>
       <div className="text-center">
-        <button type="button" className="btn btn-primary">
-          Get testing
-        </button>
-        <button type="button" className="btn btn-primary">
-          Create my own test
-        </button>
+        <Link to="/gettesting" className="nav-link">
+          <button type="button" className="btn btn-primary">
+            Get testing
+          </button>
+        </Link>
+        <Link to="/createyourowntest" className="nav-link">
+          <button type="button" className="btn btn-primary">
+            Create my own test
+          </button>
+        </Link>
       </div>
     </div>
   );

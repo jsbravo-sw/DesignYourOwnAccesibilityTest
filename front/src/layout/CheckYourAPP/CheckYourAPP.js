@@ -1,14 +1,13 @@
 import React from "react";
 
 const CheckYourAPP = (props) => {
-  console.log("LLEGUE", props.url);
   const url = props.url;
   const validateURL = () => {
     if (url == null) return false;
     if (url.startsWith("http") || url.startsWith("http")) return true;
     return false;
   };
-  console.log("VALOR", validateURL());
+
   return (
     <div>
       {validateURL() ? (
