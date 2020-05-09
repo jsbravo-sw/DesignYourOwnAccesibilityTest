@@ -24,3 +24,34 @@ iframe {
   display: block;
   margin: 0 auto;
 }
+
+.jumbotron {
+  background-image: url("./banner.jpg");
+  background-size: cover;
+  height: 70vh;
+}
+
+#jumbo {
+  padding-left: 35vw;
+}
+
+.btn {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.card {
+  width: 90%;
+}
+
+.row {
+  margin-top: 5vw;
+  margin-bottom: 2.5vw;
+}
+
+.modal-dialog {
+  margin-left: 20vw;
+  margin-right: 20vw;
+  max-width: 100%;
+  width: 60%;
+}
