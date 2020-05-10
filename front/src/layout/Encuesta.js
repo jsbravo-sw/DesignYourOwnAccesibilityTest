@@ -56,7 +56,7 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
             download(blob);
           };
 
-          //setTimeout(() => mediaRecorder.stop(), 5000);
+          setTimeout(() => mediaRecorder.stop(), 5000);
 
           function download(blob) {
             var link = document.createElement("a");
