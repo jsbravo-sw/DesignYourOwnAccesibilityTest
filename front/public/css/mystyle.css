@@ -14,12 +14,21 @@ a {
   font-family: "Noto Serif", Serif;
 }
 
+.display-4,
+.lead {
+  color: #fdfdfe;
+}
+
 .navbar {
   background-color: #4eeaf6;
 }
 
 #navbarText {
   color: #c82586;
+}
+
+.nav-link {
+  color: #021e32;
 }
 
 .btn-primary {
@@ -39,6 +48,7 @@ body {
   background-color: #f7f7f8;
 }
 
+img,
 iframe {
   border: none;
   display: block;

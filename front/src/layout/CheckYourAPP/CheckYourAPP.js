@@ -11,16 +11,9 @@ const CheckYourAPP = (props) => {
   return (
     <div>
       {validateURL() ? (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <iframe
-                title="testApp"
-                src={url}
-                height="400"
-                width="500"
-              ></iframe>
-            </div>
+        <div className="row">
+          <div className="col-md-12">
+            <iframe title="testApp" src={url} height="400" width="500"></iframe>
           </div>
         </div>
       ) : (
