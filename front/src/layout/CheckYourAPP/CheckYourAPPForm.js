@@ -18,9 +18,7 @@ const CheckYourAPPForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = formRef.current;
-    console.log(form);
     const url = form.URL.value;
-    console.log(url);
     setUrl(url);
 
     let test = {
@@ -53,7 +51,6 @@ const CheckYourAPPForm = (props) => {
   useEffect(() => {
     fetch("/getBaseTest")
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((test) => {
@@ -70,7 +67,6 @@ const CheckYourAPPForm = (props) => {
     setHabeasData(newHab);
     const newInst = form.instruction.value;
     setInstruction(newInst);
-    console.log(evt.target.value);
   };
 
   const handleChange2 = (evt) => {
@@ -78,7 +74,6 @@ const CheckYourAPPForm = (props) => {
     let copy = [...openQs];
     copy[matches[0]].label = evt.target.value;
     setOpenQsAdd(copy);
-    console.log(openQsAdd);
   };
 
   const handleChangeTitle = (evt) => {
