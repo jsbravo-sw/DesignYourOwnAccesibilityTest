@@ -5,6 +5,7 @@
 ![]()
 
 ## Description
+It is a web page that let you consttruct your own accesibility test. 
 
 ## Authors
 
@@ -23,6 +24,31 @@ In order to deploy the page locally, you should have the following technologies 
 - [Mongodb](https://www.mongodb.com/download-center/community) or [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 ## Deployment
+Enter in the root folder of the proyect and run the following commands: 
+
+```
+ # Install dependencies for server
+ yarn install
+  
+ #Enter the folder front and run yarn
+ yarn install 
+```
+Finally, create a -env file in the root folder to set the variables that are needed to run the project. For example, 
+```
+clientID="HERE GOES YOUR CLIENT ID" 
+clientSecret="HERE GOES YOUR CLIENT SECRET" 
+dbURI="HERE GOES YOUR URL TO CONNECT TO THE DATABASE OF USERS"
+cookieKey="HERE GOES YOUR COOKIE KEY"
+GOOGLEKEY="HERE GOES YOUR GOOGLE MAPS API KEY"
+MONGODB_URI="HERE GOES YOUR URL TO CONNECT TO THE OTHER DATABASE"
+```
+
+### Linux
+Run the following command: 
+```
+yarn start
+```
+
 
 ## Used technologies
 
