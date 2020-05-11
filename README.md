@@ -44,7 +44,7 @@ MONGODB_URI="HERE GOES YOUR URL TO CONNECT TO THE OTHER DATABASE"
 ```
 
 ### Linux
-Run the following command: 
+In the root folder, run the following command: 
 ```
 yarn start
 ```
