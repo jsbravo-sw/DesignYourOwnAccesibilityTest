@@ -68,6 +68,10 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
 
             link.click();
             link.remove();
+
+            stream.getTracks().forEach(function (track) {
+              track.stop();
+            });
           }
         },
         (error) => {

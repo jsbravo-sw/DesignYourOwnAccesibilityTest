@@ -31,7 +31,7 @@ const App = () => {
         <Route exact path="/createyourowntest">
           <CheckYourAPPForm user={user} />
         </Route>
-        <Route path="/desginyourownusabilitytes.com/:id">
+        <Route path="/survey/:id">
           <Encuesta />
         </Route>
       </Switch>
