@@ -20,12 +20,12 @@ const MyTests = (props) => {
         }
 
         if (residue === 1) {
-          const temp = [tests[mod3Length + 1], {}, {}];
+          const temp = [tests[mod3Length], {}, {}];
           chunked_arr.push(temp);
         }
 
         if (residue === 2) {
-          const temp = [tests[mod3Length + 1], tests[mod3Length + 2], {}];
+          const temp = [tests[mod3Length], tests[mod3Length + 1], {}];
           chunked_arr.push(temp);
         }
 
