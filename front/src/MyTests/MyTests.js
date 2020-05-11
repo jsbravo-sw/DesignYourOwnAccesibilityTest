@@ -33,11 +33,9 @@ const TestWebsites = () => {
                     <button
                       type="button"
                       className="btn btn-primary"
-                      data-toggle="modal"
-                      data-target="#modalConsent"
                       onClick={(evt) => handleClick(evt, test)}
                     >
-                      Test this website
+                      See answers
                     </button>
                     <ModalConsent test={currentTest}></ModalConsent>
                   </div>
@@ -54,7 +52,7 @@ const TestWebsites = () => {
 
   return (
     <div className="container">
-      <h1>Test some websites</h1>
+      <h1>My tests</h1>
       {code}
     </div>
   );

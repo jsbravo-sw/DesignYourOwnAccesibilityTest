@@ -22,7 +22,7 @@ const GenerateAnnonymousLink = () => {
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
         <button type="submit" className="btn btn-primary">
-          Annonymous Link
+          Anonymous Link
         </button>
       </form>
       <Link ref={AnonymusLink} to={url} className="nav-link"></Link>

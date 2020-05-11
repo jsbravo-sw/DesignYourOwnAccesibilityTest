@@ -14,6 +14,10 @@ a {
   font-family: "Noto Serif", Serif;
 }
 
+.card-body {
+  padding: 4rem;
+}
+
 .navbar {
   background-color: #4eeaf6;
 }

@@ -35,6 +35,11 @@ const NavBar = (props) => {
               Home
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/gettesting" className="nav-link">
+              Test
+            </Link>
+          </li>
           {!props.user ? (
             <li className="nav-item">
               <a className="nav-link" href={`${backurl}/auth/google`}>
