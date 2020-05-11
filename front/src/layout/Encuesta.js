@@ -68,6 +68,10 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
 
             link.click();
             link.remove();
+
+            stream.getTracks().forEach(function (track) {
+              track.stop();
+            });
           }
         },
         (error) => {
@@ -83,12 +87,8 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
 
 const Encuesta = () => {
   var id = useParams().id;
-  const startSurvey = 0;
 
-  const verify = () => {
-    if (startSurvey === 0) return false;
-    return true;
-  };
+  window.scrollTo(0, 0);
 
   const formRef = React.createRef();
   const formRefEncuesta = React.createRef();
@@ -102,7 +102,6 @@ const Encuesta = () => {
     event.preventDefault();
     const form = formRef.current;
     form.innerHTML = "";
-    verify();
   };
 
   const handleEndSurvey = (event) => {
@@ -121,6 +120,13 @@ const Encuesta = () => {
   return (
     <div className="container">
       <form ref={formRef} onSubmit={handleSubmit}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h1> We are going to record you until the end of the survey</h1>
         <div>
           <button type="submit" className="btn btn-primary">
@@ -139,15 +145,11 @@ const Encuesta = () => {
           <canvas style={styles} ref={canvasRef} width="720" height="650" />
         </div>
       </form>
-      {!verify() ? (
-        <form ref={formRefEncuesta} onSubmit={handleEndSurvey}>
-          <button type="submit" className="btn btn-primary">
-            Done
-          </button>
-        </form>
-      ) : (
-        <div></div>
-      )}
+      <form ref={formRefEncuesta} onSubmit={handleEndSurvey}>
+        <button type="submit" className="btn btn-primary">
+          Done
+        </button>
+      </form>
     </div>
   );
 };

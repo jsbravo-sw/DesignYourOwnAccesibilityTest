@@ -35,7 +35,7 @@ const App = () => {
         <Route exact path="/mytests">
           <MyTests user={user} />
         </Route>
-        <Route path="/desginyourownusabilitytes.com/:id">
+        <Route path="/survey/:id">
           <Encuesta />
         </Route>
       </Switch>

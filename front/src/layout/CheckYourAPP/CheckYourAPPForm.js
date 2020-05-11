@@ -144,6 +144,7 @@ const CheckYourAPPForm = (props) => {
                     aria-describedby="emailHelp"
                   />
                 </div>
+                <CheckYourAPP url={url}></CheckYourAPP>
                 <div class="form-group">
                   <label for="texta1">Habeas Data</label>
                   <br></br>
@@ -246,7 +247,6 @@ const CheckYourAPPForm = (props) => {
                 </button>
               </form>
             </div>
-            <CheckYourAPP url={url}></CheckYourAPP>
             <br />
             <GenerateAnnonymousLink></GenerateAnnonymousLink>
           </div>
