@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalAnswerView from "./ModalAnswerView.js";
 
-const id = "5eb8d312382a666950f8d091";
-
 const TestAnswers = (props) => {
   const [currentAnswer, setCurrentAnswer] = useState({});
   const [answers, setAnswers] = useState([]);
@@ -12,10 +10,9 @@ const TestAnswers = (props) => {
   };
 
   useEffect(() => {
-    fetch(`/getAllAnswersTest/${id}`)
+    fetch(`/getAllAnswersTest/${props.test._id}`)
       .then((response) => response.json())
       .then((tests) => {
-        console.log(tests);
         const chunked_arr = [];
         const totalLength = tests.length;
         const residue = totalLength % 3;
@@ -36,17 +33,14 @@ const TestAnswers = (props) => {
           chunked_arr.push(temp);
         }
 
-        console.log("chonk", chunked_arr);
         setAnswers(chunked_arr);
       });
   }, []);
 
   const code = answers.map((group, i) => {
-    console.log("group", group);
     return (
       <div key={"row" + i} className="row">
         {group.map((answer, j) => {
-          console.log("answer", answer);
           return (
             <div key={"answer" + j} className="col-sm">
               {answer ? (

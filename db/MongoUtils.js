@@ -11,21 +11,19 @@ function MongoUtils() {
     pwd = process.env.MONGO_PWD;
 
   mu.connect = () => {
-    console.log("Trying to connect to mongoutils");
-    let url =
-      "mongodb+srv://admin:M3hVhCjfL25Znr4@cluster0-v8tg7.mongodb.net/test?retryWrites=true&w=majority";
+    let url = `mongodb://${hostname}:${port}`;
     if (user === undefined) {
-      // url = process.env.MONGODB_URI;
+      url = process.env.MONGODB_URI;
     } else {
       url = `mongodb://${user}:${pwd}@${hostname}:${port}`;
     }
-    console.log(url);
+
     const cliente = new MongoClient(
       url,
       { useNewUrlParser: true },
       { useUnifiedTopology: true }
     );
-    console.log("Connected");
+
     return cliente.connect();
   };
 

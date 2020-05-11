@@ -34,7 +34,7 @@ const App = () => {
           <CheckYourAPPForm user={user} />
         </Route>
         <Route exact path="/mytests">
-          <MyTests user={{ _id: 1 }} />
+          <MyTests user={user} />
         </Route>
         <Route exact path="/getTestAnswers">
           <TestAnswers test={{ _id: "5eb8d312382a666950f8d091" }} />

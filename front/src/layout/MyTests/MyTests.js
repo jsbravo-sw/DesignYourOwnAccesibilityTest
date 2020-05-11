@@ -5,12 +5,7 @@ const MyTests = (props) => {
   const [currentTest, setCurrentTest] = useState({});
   const [tests, setTests] = useState([]);
 
-  const handleClick = (evt, test) => {
-    setCurrentTest(test);
-  };
-
   useEffect(() => {
-    console.log(props.user._id);
     fetch(`/getAllTestsUser/${props.user._id}`)
       .then((response) => response.json())
       .then((tests) => {
@@ -34,7 +29,6 @@ const MyTests = (props) => {
           chunked_arr.push(temp);
         }
 
-        console.log("chunk", chunked_arr);
         setTests(chunked_arr);
       });
   }, []);
@@ -43,7 +37,6 @@ const MyTests = (props) => {
     return (
       <div key={"row" + i} className="row">
         {group.map((test) => {
-          console.log(test);
           return (
             <div key={test.title + 1} className="col-sm">
               {test.title ? (

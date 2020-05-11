@@ -1,7 +1,6 @@
 import React from "react";
 
 const modalAnswerView = (props) => {
-  console.log("props.answer", props.answer);
   return (
     <div
       className="modal fade"
