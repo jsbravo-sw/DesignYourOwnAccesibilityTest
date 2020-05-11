@@ -16,14 +16,25 @@ const TestWebsites = () => {
       })
       .then((tests) => {
         const chunked_arr = [];
-        for (let i = 0; i < tests.length; i++) {
-          const last = chunked_arr[chunked_arr.length - 1];
-          if (!last || last.length === 3) {
-            chunked_arr.push([tests[i]]);
-          } else {
-            last.push(tests[i]);
-          }
+        const totalLength = test.length;
+        const residue = totalLength % 3;
+        const mod3Length = totalLength - residue;
+
+        for (var i = 0; i < mod3Length; i += 3) {
+          const temp = [tests[i], tests[i + 1], tests[i + 2]];
+          chunked_arr.push(temp);
         }
+
+        if (residue === 1) {
+          const temp = [tests[mod3Length + 1], {}, {}];
+          chunked_arr.push(temp);
+        }
+
+        if (residue === 2) {
+          const temp = [tests[mod3Length + 1], tests[mod3Length + 2], {}];
+          chunked_arr.push(temp);
+        }
+
         console.log(chunked_arr);
         setTests(chunked_arr);
       });

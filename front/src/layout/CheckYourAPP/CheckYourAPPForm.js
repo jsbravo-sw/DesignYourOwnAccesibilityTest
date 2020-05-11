@@ -97,7 +97,7 @@ const CheckYourAPPForm = (props) => {
   return (
     <div className="container">
       <h1>Create your own test </h1>
-      {isLogin() ? (
+      {!isLogin() ? (
         <div>
           <img
             src={ErrorImage}
