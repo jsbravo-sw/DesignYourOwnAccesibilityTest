@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "client-install": "cd front && yarn install",
+    "start": "node ./bin/www",
+    "server": "nodemon ./bin/www",
+    "client": "cd front && yarn start",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "heroku-postbuild": "cd front && yarn install && yarn run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -120,6 +120,13 @@ const Encuesta = () => {
   return (
     <div className="container">
       <form ref={formRef} onSubmit={handleSubmit}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h1> We are going to record you until the end of the survey</h1>
         <div>
           <button type="submit" className="btn btn-primary">
