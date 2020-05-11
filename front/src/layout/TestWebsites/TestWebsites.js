@@ -1,35 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalConsent from "./ModalConsent.js";
-
-let tests = [
-  [{ name: 1 }, { name: 2 }, { name: 3 }],
-  [{ name: 4 }, {}, {}],
-];
 
 const TestWebsites = () => {
   const [currentTest, setCurrentTest] = useState({});
+  const [tests, setTests] = useState([]);
 
   const handleClick = (evt, test) => {
     setCurrentTest(test);
   };
+
+  useEffect(() => {
+    fetch("/getAllTests")
+      .then((response) => {
+        return response.json();
+      })
+      .then((tests) => {
+        const chunked_arr = [];
+        for (let i = 0; i < tests.length; i++) {
+          const last = chunked_arr[chunked_arr.length - 1];
+          if (!last || last.length === 3) {
+            chunked_arr.push([tests[i]]);
+          } else {
+            last.push(tests[i]);
+          }
+        }
+        console.log(chunked_arr);
+        setTests(chunked_arr);
+      });
+  }, []);
 
   const code = tests.map((group, i) => {
     return (
       <div key={"row" + i} className="row">
         {group.map((test) => {
           return (
-            <div key={test.name} className="col-sm">
-              {test.name ? (
+            <div key={test.title + 1} className="col-sm">
+              {test.title ? (
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{test.name}</h5>
+                    <h5 className="card-title">{test.title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">
-                      Card subtitle
+                      {test.url}
                     </h6>
-                    <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
+                    <p className="card-text">{test.description}</p>
                     <button
                       type="button"
                       className="btn btn-primary"

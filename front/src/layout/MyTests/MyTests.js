@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalConsent from "./ModalConsent.js";
+import ModalConsent from "../TestWebsites/ModalConsent.js";
 
 let tests = [
   [{ name: 1 }, { name: 2 }, { name: 3 }],

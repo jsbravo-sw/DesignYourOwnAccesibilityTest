@@ -12,6 +12,8 @@ const CheckYourAPPForm = (props) => {
   const [openQsAdd, setOpenQsAdd] = useState([]);
   const [selectQs, setSelectQs] = useState([]);
   const [radioQs, setRadioQs] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,10 +22,12 @@ const CheckYourAPPForm = (props) => {
     const url = form.URL.value;
     console.log(url);
     setUrl(url);
-    console.log("openQs", openQs);
 
     let test = {
       user: 1,
+      title: title,
+      description: description,
+      url: url,
       habeas: habeasData,
       selectQs: selectQs,
       radioQs: radioQs,
@@ -77,6 +81,14 @@ const CheckYourAPPForm = (props) => {
     console.log(openQsAdd);
   };
 
+  const handleChangeTitle = (evt) => {
+    setTitle(evt.target.value);
+  };
+
+  const handleChangeDescription = (evt) => {
+    setDescription(evt.target.value);
+  };
+
   const addOpenQuestion = (evt) => {
     setOpenQs([...openQs, { label: "" }]);
     setOpenQsAdd([...openQsAdd, { label: "" }]);
@@ -84,11 +96,12 @@ const CheckYourAPPForm = (props) => {
 
   return (
     <div className="container">
-      {!isLogin() ? (
+      <h1>Create your own test </h1>
+      {isLogin() ? (
         <div>
           <img
             src={ErrorImage}
-            alt="You need to be login to do your own test"
+            alt="You need to be logged in to do create your own test"
             height="112"
             width="112"
           />
@@ -102,6 +115,26 @@ const CheckYourAPPForm = (props) => {
           <div className="card-body">
             <div>
               <form ref={formRef} onSubmit={handleSubmit}>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <textarea
+                    class="form-control"
+                    id="title"
+                    rows="1"
+                    placeholder="Type a title here"
+                    onChange={handleChangeTitle}
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="title">Description</label>
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    rows="1"
+                    placeholder="Type a description for your webpage here"
+                    onChange={handleChangeDescription}
+                  ></textarea>
+                </div>
                 <div className="form-group">
                   <label>Insert your application URL</label>
                   <input

@@ -26,7 +26,7 @@ const ModalConsent = (props) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">{props.test.name}</div>
+          <div className="modal-body">{props.test.habeas}</div>
           <div className="modal-footer">
             <button
               type="button"

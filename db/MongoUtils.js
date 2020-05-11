@@ -12,9 +12,10 @@ function MongoUtils() {
 
   mu.connect = () => {
     console.log("Trying to connect to mongoutils");
-    let url = `mongodb://${hostname}:${port}`;
+    let url =
+      "mongodb+srv://admin:M3hVhCjfL25Znr4@cluster0-v8tg7.mongodb.net/test?retryWrites=true&w=majority";
     if (user === undefined) {
-      url = process.env.MONGODB_URI;
+      // url = process.env.MONGODB_URI;
     } else {
       url = `mongodb://${user}:${pwd}@${hostname}:${port}`;
     }
@@ -26,19 +27,6 @@ function MongoUtils() {
     );
     console.log("Connected");
     return cliente.connect();
-  };
-
-  mu.newFavor = (favor) => {
-    console.log(favor);
-    return mu.connect().then((client) => {
-      console.log(client);
-      client
-        .db(dbName)
-        .collection("favors")
-        .insertOne(favor)
-        .catch((err) => console.log(err))
-        .finally(() => client.close());
-    });
   };
 
   mu.getAllTests = () => {

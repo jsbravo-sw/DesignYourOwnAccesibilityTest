@@ -3,6 +3,7 @@ import NavBar from "./layout/NavBar.js";
 import CheckYourAPPForm from "./layout/CheckYourAPP/CheckYourAPPForm.js";
 import Home from "./layout/Home/Home.js";
 import TestWebsites from "./layout/TestWebsites/TestWebsites.js";
+import MyTests from "./layout/MyTests/MyTests.js";
 import Encuesta from "./layout/Encuesta.js";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -30,6 +31,9 @@ const App = () => {
         </Route>
         <Route exact path="/createyourowntest">
           <CheckYourAPPForm user={user} />
+        </Route>
+        <Route exact path="/mytests">
+          <MyTests user={user} />
         </Route>
         <Route path="/desginyourownusabilitytes.com/:id">
           <Encuesta />
