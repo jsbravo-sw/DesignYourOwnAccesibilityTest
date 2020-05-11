@@ -2,8 +2,41 @@ import React, { useRef, useState, useEffect } from "react";
 
 const ModalAnswer = (props) => {
   const formRef = useRef();
-  const handleSubmit = (evt) => {};
-  console.log("props", props);
+  const handleSubmit = (evt) => {
+    var formData = new FormData(formRef.current);
+    let answers = [];
+    // Display the key/value pairs
+    let ans = "";
+    for (var q of props.test.radioQs) {
+      ans = q.label;
+    }
+    for (var pair of formData.values()) {
+      answers = [...answers, { question: ans, answer: pair }];
+    }
+    for (let i = 3; i < formRef.current.length; i++) {
+      let j = i - 3;
+      let k = j - props.test.selectQs.length;
+      if (j >= props.test.selectQs.length) {
+        ans = props.test.openQs[k].label;
+      } else {
+        ans = props.test.selectQs[j].label;
+      }
+      answers = [
+        ...answers,
+        { question: ans, answer: formRef.current[i].value },
+      ];
+    }
+    const testAns = { test: props.test._id, answers };
+    console.log(testAns);
+
+    fetch("/newAnswer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(testAns),
+    });
+  };
   return (
     <div
       className="modal fade"
@@ -42,7 +75,8 @@ const ModalAnswer = (props) => {
                               <input
                                 type="radio"
                                 id={ans.answer}
-                                name={ans.answer}
+                                name="radio"
+                                value={ans.answer}
                                 className="custom-control-input"
                               ></input>
                               <label
@@ -65,7 +99,7 @@ const ModalAnswer = (props) => {
                     <div className="form-group">
                       <label>{q.label}</label>
                       <select className="custom-select">
-                        <option selected>{q.selected}</option>
+                        <option>{q.selected}</option>
                         {q.options ? (
                           q.options.map((o) => {
                             return <option value={o.option}>{o.option}</option>;
@@ -108,7 +142,11 @@ const ModalAnswer = (props) => {
             >
               Close
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleSubmit}
+            >
               Submit
             </button>
           </div>

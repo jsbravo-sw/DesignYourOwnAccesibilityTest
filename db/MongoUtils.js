@@ -36,7 +36,7 @@ function MongoUtils() {
         .collection("test")
         .find()
         .skip(1)
-        .limit(10)
+        .limit(15)
         .toArray()
         .finally(() => client.close())
     );
@@ -65,6 +65,44 @@ function MongoUtils() {
         .catch((err) => console.log(err))
         .finally(() => client.close());
     });
+  };
+
+  mu.newAnswer = (answer) => {
+    return mu.connect().then((client) => {
+      console.log(client);
+      client
+        .db(dbName)
+        .collection("testans")
+        .insertOne(answer)
+        .catch((err) => console.log(err))
+        .finally(() => client.close());
+    });
+  };
+
+  mu.getAllTestsUser = (id) => {
+    const query = { user: id };
+    return mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("test")
+        .find(query)
+        .limit(15)
+        .toArray()
+        .finally(() => client.close())
+    );
+  };
+
+  mu.getAllAnswersTest = (id) => {
+    const query = { test: id };
+    return mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("testans")
+        .find(query)
+        .limit(15)
+        .toArray()
+        .finally(() => client.close())
+    );
   };
 
   return mu;

@@ -26,4 +26,28 @@ router.post("/newTest", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.post("/newAnswer", (req, res) => {
+  let answer = req.body;
+  mu.newAnswer(answer)
+    .then(() => res.sendStatus(200))
+    .catch((err) => console.log(err));
+});
+
+router.get("/getAllTestsUser/:id", function (req, res) {
+  console.log(req.params);
+  mu.getAllTestsUser(parseInt(req.params.id))
+    .then((tests) => {
+      return res.json(tests);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get("/getAllAnswersTest/:id", function (req, res) {
+  mu.getAllAnswersTest(req.params.id)
+    .then((tests) => {
+      return res.json(tests);
+    })
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;

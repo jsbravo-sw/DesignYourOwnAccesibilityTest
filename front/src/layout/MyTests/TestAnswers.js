@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import ModalConsent from "./ModalConsent.js";
+import ModalAnswerView from "./ModalAnswerView.js";
 
-const TestWebsites = () => {
-  const [currentTest, setCurrentTest] = useState({});
-  const [tests, setTests] = useState([]);
+const id = "5eb8d312382a666950f8d091";
 
-  const handleClick = (evt, test) => {
-    setCurrentTest(test);
+const TestAnswers = (props) => {
+  const [currentAnswer, setCurrentAnswer] = useState({});
+  const [answers, setAnswers] = useState([]);
+
+  const handleClick = (evt, answer) => {
+    setCurrentAnswer(answer);
   };
 
   useEffect(() => {
-    fetch("/getAllTests")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`/getAllAnswersTest/${id}`)
+      .then((response) => response.json())
       .then((tests) => {
+        console.log(tests);
         const chunked_arr = [];
         const totalLength = tests.length;
         const residue = totalLength % 3;
@@ -35,35 +36,33 @@ const TestWebsites = () => {
           chunked_arr.push(temp);
         }
 
-        console.log(chunked_arr);
-        setTests(chunked_arr);
+        console.log("chonk", chunked_arr);
+        setAnswers(chunked_arr);
       });
   }, []);
 
-  const code = tests.map((group, i) => {
+  const code = answers.map((group, i) => {
+    console.log("group", group);
     return (
       <div key={"row" + i} className="row">
-        {group.map((test) => {
+        {group.map((answer, j) => {
+          console.log("answer", answer);
           return (
-            <div key={test.title + 1} className="col-sm">
-              {test.title ? (
+            <div key={"answer" + j} className="col-sm">
+              {answer ? (
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{test.title}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">
-                      {test.url}
-                    </h6>
-                    <p className="card-text">{test.description}</p>
+                    <h5 className="card-title">{"answer" + j}</h5>
                     <button
                       type="button"
                       className="btn btn-primary"
                       data-toggle="modal"
-                      data-target="#modalConsent"
-                      onClick={(evt) => handleClick(evt, test)}
+                      data-target="#modalAnswerView"
+                      onClick={(evt) => handleClick(evt, answer)}
                     >
-                      Test this website
+                      See the answer
                     </button>
-                    <ModalConsent test={currentTest}></ModalConsent>
+                    <ModalAnswerView answer={currentAnswer}></ModalAnswerView>
                   </div>
                 </div>
               ) : (
@@ -78,10 +77,10 @@ const TestWebsites = () => {
 
   return (
     <div className="container">
-      <h1>Test some websites</h1>
+      <h1>Test answers</h1>
       {code}
     </div>
   );
 };
 
-export default TestWebsites;
+export default TestAnswers;

@@ -4,6 +4,7 @@ import CheckYourAPPForm from "./layout/CheckYourAPP/CheckYourAPPForm.js";
 import Home from "./layout/Home/Home.js";
 import TestWebsites from "./layout/TestWebsites/TestWebsites.js";
 import MyTests from "./layout/MyTests/MyTests.js";
+import TestAnswers from "./layout/MyTests/TestAnswers.js";
 import Encuesta from "./layout/Encuesta.js";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -33,7 +34,10 @@ const App = () => {
           <CheckYourAPPForm user={user} />
         </Route>
         <Route exact path="/mytests">
-          <MyTests user={user} />
+          <MyTests user={{ _id: 1 }} />
+        </Route>
+        <Route exact path="/getTestAnswers">
+          <TestAnswers test={{ _id: "5eb8d312382a666950f8d091" }} />
         </Route>
         <Route path="/survey/:id">
           <Encuesta />

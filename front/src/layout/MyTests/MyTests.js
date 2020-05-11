@@ -1,43 +1,64 @@
-import React, { useState } from "react";
-import ModalConsent from "../TestWebsites/ModalConsent.js";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-let tests = [
-  [{ name: 1 }, { name: 2 }, { name: 3 }],
-  [{ name: 4 }, {}, {}],
-];
-
-const TestWebsites = () => {
+const MyTests = (props) => {
   const [currentTest, setCurrentTest] = useState({});
+  const [tests, setTests] = useState([]);
 
   const handleClick = (evt, test) => {
     setCurrentTest(test);
   };
 
+  useEffect(() => {
+    console.log(props.user._id);
+    fetch(`/getAllTestsUser/${props.user._id}`)
+      .then((response) => response.json())
+      .then((tests) => {
+        const chunked_arr = [];
+        const totalLength = tests.length;
+        const residue = totalLength % 3;
+        const mod3Length = totalLength - residue;
+
+        for (var i = 0; i < mod3Length; i += 3) {
+          const temp = [tests[i], tests[i + 1], tests[i + 2]];
+          chunked_arr.push(temp);
+        }
+
+        if (residue === 1) {
+          const temp = [tests[mod3Length + 1], {}, {}];
+          chunked_arr.push(temp);
+        }
+
+        if (residue === 2) {
+          const temp = [tests[mod3Length + 1], tests[mod3Length + 2], {}];
+          chunked_arr.push(temp);
+        }
+
+        console.log("chunk", chunked_arr);
+        setTests(chunked_arr);
+      });
+  }, []);
+
   const code = tests.map((group, i) => {
     return (
       <div key={"row" + i} className="row">
         {group.map((test) => {
+          console.log(test);
           return (
-            <div key={test.name} className="col-sm">
-              {test.name ? (
+            <div key={test.title + 1} className="col-sm">
+              {test.title ? (
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{test.name}</h5>
+                    <h5 className="card-title">{test.title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">
-                      Card subtitle
+                      {test.url}
                     </h6>
-                    <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={(evt) => handleClick(evt, test)}
-                    >
-                      See answers
-                    </button>
-                    <ModalConsent test={currentTest}></ModalConsent>
+                    <p className="card-text">{test.description}</p>
+                    <Link to="/getTestAnswers" className="nav-link">
+                      <button type="button" className="btn btn-primary">
+                        See answers
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ) : (
@@ -58,4 +79,4 @@ const TestWebsites = () => {
   );
 };
 
-export default TestWebsites;
+export default MyTests;
