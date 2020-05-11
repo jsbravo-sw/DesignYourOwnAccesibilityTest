@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 
 import { Link } from "react-router-dom";
 
-const backurl = "https://designyourownaccesbilitytest.herokuapp.com/";
+const backurl = "https://designyourownaccesbilitytest.herokuapp.com";
 
 const NavBar = (props) => {
   return (
