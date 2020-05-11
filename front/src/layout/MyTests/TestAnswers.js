@@ -33,7 +33,7 @@ const TestAnswers = (props) => {
           chunked_arr.push(temp);
         }
 
-        setTests(chunked_arr);
+        setAnswers(chunked_arr);
       });
   }, []);
 
