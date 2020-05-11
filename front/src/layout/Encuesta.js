@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+var mediaRecorder = "";
+
 const video = (videoRef, canvasRef, chunks, formRef) => {
   if (
     navigator.mediaDevices.getUserMedia ||
@@ -43,7 +45,7 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
             }
           }
 
-          const mediaRecorder = new MediaRecorder(stream, options);
+          mediaRecorder = new MediaRecorder(stream, options);
 
           mediaRecorder.start();
           mediaRecorder.ondataavailable = function (e) {
@@ -55,8 +57,6 @@ const video = (videoRef, canvasRef, chunks, formRef) => {
             var blob = new Blob(chunks, { type: "video/webm" });
             download(blob);
           };
-
-          setTimeout(() => mediaRecorder.stop(), 5000);
 
           function download(blob) {
             var link = document.createElement("a");
@@ -109,6 +109,7 @@ const Encuesta = () => {
     event.preventDefault();
     const form = formRef.current;
     form.innerHTML = "You just finish the survey. Thanks";
+    mediaRecorder.stop();
   };
 
   // we are gonna use inline style
