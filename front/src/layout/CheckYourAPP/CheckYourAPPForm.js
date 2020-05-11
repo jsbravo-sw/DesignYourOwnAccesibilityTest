@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import CheckYourAPP from "./CheckYourAPP.js";
 import GenerateAnnonymousLink from "./GenerateAnnonymousLink.js";
+import ErrorImage from "./ErrorImage.jpeg";
 
 const CheckYourAPPForm = (props) => {
   const formRef = useRef();
@@ -83,10 +84,18 @@ const CheckYourAPPForm = (props) => {
 
   return (
     <div className="container">
-      <h1>Create a test for your app</h1>
-      {isLogin() ? (
-        <div className="alert alert-danger" role="alert">
-          You need to be logged in to create your own test
+      {!isLogin() ? (
+        <div>
+          <img
+            src={ErrorImage}
+            alt="You need to be login to do your own test"
+            height="112"
+            width="112"
+          />
+          <br />
+          <div className="alert alert-danger" role="alert">
+            You need to be login to do your own test
+          </div>
         </div>
       ) : (
         <div className="card">

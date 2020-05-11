@@ -17,6 +17,10 @@ a {
 .card-body {
   padding: 4rem;
 }
+.display-4,
+.lead {
+  color: #fdfdfe;
+}
 
 .navbar {
   background-color: #4eeaf6;
@@ -24,6 +28,10 @@ a {
 
 #navbarText {
   color: #c82586;
+}
+
+.nav-link {
+  color: #021e32;
 }
 
 .btn-primary {
@@ -43,6 +51,7 @@ body {
   background-color: #f7f7f8;
 }
 
+img,
 iframe {
   border: none;
   display: block;
