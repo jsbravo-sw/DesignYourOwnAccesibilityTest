@@ -48,7 +48,10 @@ In the root folder, run the following command:
 ```
 yarn start
 ```
-
+Then, go to the front foler and run the following command:  
+```
+yarn start
+```
 
 ## Used technologies
 
