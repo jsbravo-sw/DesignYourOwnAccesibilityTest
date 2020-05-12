@@ -17,9 +17,6 @@ const cors = require("cors");
 
 const app = express();
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
 
 // set up session cookies
 app.use(
@@ -34,10 +31,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 
-//connect to mongodb
-mongoose.connect(process.env.dbURI, () => {
-  console.log("connected to mongoDB");
-});
 
 app.use(logger("dev"));
 app.use(express.json());
