@@ -1,5 +1,7 @@
 import React from "react";
-
+/** 
+Consideren utilizar Modales de Bootstrap React https://react-bootstrap.github.io/components/modal/, es más sencillo.
+**/
 const modalAnswerView = (props) => {
   return (
     <div
